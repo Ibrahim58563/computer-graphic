@@ -73,8 +73,8 @@ List<Widget> lessonContent = [
   // lecture 3
   Column(),
   // lecture 4
-  Column(
-    children: [
+  Items(
+    content: [
       MainTitle(text: "بسم الله الرحمن الرحيم"),
       NormalText(
           text:

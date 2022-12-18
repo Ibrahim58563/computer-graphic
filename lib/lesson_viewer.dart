@@ -1,5 +1,4 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
-import 'package:computer_graphic/components.dart';
 import 'package:computer_graphic/lesson_content.dart';
 import 'package:computer_graphic/ui.dart';
 import 'package:flutter/material.dart';
@@ -7,10 +6,12 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import 'components.dart';
+
 class LessonViewer extends StatefulWidget {
   final String? lessonName;
-  Widget? lessonContent = Container();
-  LessonViewer({
+  final Widget? lessonContent;
+  const LessonViewer({
     Key? key,
     this.lessonName,
     this.lessonContent,

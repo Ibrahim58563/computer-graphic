@@ -1,6 +1,4 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
-import 'package:computer_graphic/components.dart';
-import 'package:computer_graphic/lesson_content.dart';
 import 'package:computer_graphic/presentation/resources/assets_manager.dart';
 import 'package:computer_graphic/presentation/resources/color_manger.dart';
 import 'package:flutter/material.dart';
@@ -11,7 +9,9 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:computer_graphic/lesson_viewer.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-//TODO: NULL DATA
+import 'components.dart';
+import 'lesson_content.dart';
+
 class Home extends StatefulWidget {
   const Home({
     super.key,
@@ -53,17 +53,13 @@ class _HomeState extends State<Home> {
     "Midpoint Ellipse code Implementation",
     "Scan Line Polygon",
   ];
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(
-          "Home",
-          style: GoogleFonts.russoOne(
-            fontSize: 25,
-          ),
-        ),
+        title: Text("Home",style: GoogleFonts.russoOne(
+          fontSize: 25,
+        ),),
       ),
       body: Column(
         children: [
@@ -72,10 +68,17 @@ class _HomeState extends State<Home> {
               itemBuilder: (context, index) => InkWell(
                 onTap: () => Navigator.push(context,
                     MaterialPageRoute(builder: (context) {
-                  return LessonViewer(
-                    lessonName: lessonsName[index],
-                    lessonContent: lessonContent[index],
-                  );
+                  try {
+                    return LessonViewer(
+                      lessonName: lessonsName[index],
+                      lessonContent: lessonContent[index],
+                    );
+                  } catch (e) {
+                    return LessonViewer(
+                      lessonName: lessonsName[index],
+                      lessonContent: Center(child: MainTitle(text: "No Data!")),
+                    );
+                  }
                 })),
                 child: Container(
                   child: Column(
